@@ -52,8 +52,8 @@ MIDDLEWARE = [
     #"firewall.middlewate.IPFirewallMiddleware",
 ]
 
-# RATE_LIMIT_WINDOW = 5  # seconds
-# RATE_LIMIT_COUNT = 3   # requests allowed
+RATE_LIMIT_WINDOW = 10  # 10초
+RATE_LIMIT_COUNT = 10   # 10회
 
 CACHES = {
     'default': {
