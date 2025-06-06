@@ -1,0 +1,20 @@
+[
+  {
+    "model": "firewall.allowedip",
+    "pk": 1,
+    "fields": {
+      "ip_address": "127.0.0.1",
+      "description": "localhost default"
+    }
+  },
+
+  {
+    "model": "firewall.allowedip",
+    "pk": 2,
+    "fields": {
+      "ip_address": "10.223.112.34",
+      "description": "Postman test"
+    }
+  }
+
+]
