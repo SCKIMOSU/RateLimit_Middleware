@@ -36,21 +36,26 @@ class RateLimitMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
 
+        from django.conf import settings
+        # 설정 또는 기본값
+        self.window = getattr(settings, "RATE_LIMIT_WINDOW", 10)  # 10초
+        self.limit = getattr(settings, "RATE_LIMIT_COUNT", 10)    # 10회
+
     def __call__(self, request):
         ip = self.get_client_ip(request)
         now = time.time()
         key = f"rate-limit:{ip}"
-        window = 60  # 초
-        limit = 10   # 허용 횟수
+        # window = 60  # 초
+        # limit = 10   # 허용 횟수
 
         history = cache.get(key, [])
-        history = [timestamp for timestamp in history if now - timestamp < window]
+        history = [timestamp for timestamp in history if now - timestamp < self.window]
 
-        if len(history) >= limit:
+        if len(history) >= self.limit:
             return JsonResponse({"error": "Rate limit exceeded. Try again later."}, status=429)
 
         history.append(now)
-        cache.set(key, history, timeout=window)
+        cache.set(key, history, timeout=self.window)
 
         return self.get_response(request)
 
