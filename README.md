@@ -339,7 +339,7 @@ CACHES = {
 | ✅ 파일 기반 | `'django.core.cache.backends.filebased.FileBasedCache'` | `'/tmp/django_cache'` | 서버의 **디스크 파일 시스템에 저장** |
 | ✅ Memcached | `'django.core.cache.backends.memcached.MemcachedCache'` | `'127.0.0.1:11211'` | 외부 메모리 서버 |
 | ✅ Redis (Remote Dictionary Server) | `'django_redis.cache.RedisCache'` | `'redis://127.0.0.1:6379/1'` | **외부 Redis 서버**, 멀티 서버 환경 추천 |
-| 데이터베이스 | `'django.core.cache.backends.db.DatabaseCache'` | `'my_cache_table'` | 캐시 데이터를 DB에 저장 |
+| ✅ 데이터베이스 | `'django.core.cache.backends.db.DatabaseCache'` | `'my_cache_table'` | 캐시 데이터를 DB에 저장 |
 
 ## 🟥 Redis 서버란?
 
